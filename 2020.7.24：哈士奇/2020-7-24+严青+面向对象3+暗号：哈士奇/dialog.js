@@ -172,8 +172,8 @@ export default class Dialog extends EventTarget{
                 this.style.top = yy - y + "px";
             }
         }
-        document.onmouseup = function () {
-            kDialog.onmousemove = "";
+        kDialog.onmouseup = function () {
+            kDialog.onmousemove = '';
         }
     }
 }
@@ -213,12 +213,12 @@ class ShowDialog extends HTMLElement{
         }
     }
     get title(){
-        if(this.getAttribute("title")){
-            return this.getAttribute("title")
-        }else{
-            return "默认标题"
-        }
-        // return this.getAttribute("title") ?? "默认标题"
+        // if(this.getAttribute("title")){
+        //     return this.getAttribute("title")
+        // }else{
+        //     return "默认标题"
+        // }
+        return this.getAttribute("title") ?? "默认标题"
     }
 
 }
