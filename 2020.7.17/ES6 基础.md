@@ -1,9 +1,5 @@
 # ECMAScript 6基础
 
- <img src="assets/logo.png" style="float:left;width:120px;margin-top:0px;" />
-
-
-
 
 - 课堂目标
   - 录播视频要点回顾

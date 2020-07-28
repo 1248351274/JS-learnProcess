@@ -119,9 +119,10 @@
 </style>
 <body>
     <button class="btn1">按钮1</button>
+    <button class="btn2">按钮1</button>
 </body>
 <script type="module">
-    import Dialog from './dialog.js'
+    import Dialog,{InputDialog} from './dialog.js'
 
     let dialog = new Dialog({
         title:'我的弹窗',
@@ -132,7 +133,15 @@
     document.querySelector('.btn1').onclick = function(){
         dialog.open()
     }
-
+    let inputDialog = new InputDialog({
+        title:'我的InputDialog弹窗',
+        success(){
+            console.log('确认成功')
+        }
+    })
+    document.querySelector('.btn2').onclick = function(){
+        inputDialog.open()
+    }
     
 </script>
 </html>

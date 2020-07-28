@@ -1,7 +1,8 @@
-export default class Dialog extends EventTarget{
+export default class Dialog{
     constructor(options){
         // 默认配置
-        super()
+        // super()
+        console.log('this EventTarget',this)
         let defaultOption = {
             width:'30%',
             height: '250px',
@@ -16,14 +17,14 @@ export default class Dialog extends EventTarget{
         // 合并配置
         this.opts = Object.assign(defaultOption,options)
         this.init();
-
+        console.log('this dialog',this)
     }
     // 初始化函数
     init(){
     
         this.createElement()
         // 监控事件success
-        this.addEventListener("success",this.opts.success)
+        // this.addEventListener("success",this.opts.success)
         this.addElesEvent()
         if(!this.opts.mastable){
             this.divEles.querySelector(".k-wrapper").style.display = "none";
@@ -55,6 +56,7 @@ export default class Dialog extends EventTarget{
     dragger(){
         let kDialog = this.divEles.querySelector('.k-dialog')
         kDialog.onmousedown = function(e){
+            console.log('鼠标按下')
             let x = e.screenX - this.offsetLeft
             let y = e.screenY - this.offsetTop
             kDialog.onmousemove = function(e){
@@ -65,6 +67,7 @@ export default class Dialog extends EventTarget{
             }
         }
         kDialog.onmouseup = function(){
+            console.log('鼠标抬起')
             kDialog.onmousemove = ''
         }
     }
@@ -113,4 +116,19 @@ export default class Dialog extends EventTarget{
     close(){
         this.divEles.style.display = 'none'
     }
+}
+
+export class InputDialog extends Dialog{
+    constructor(options){
+        super(options)
+        this.createInput()
+        console.log('this',this)
+    }
+    createInput(){
+        let myInput = document.createElement('input')
+        myInput.classList.add('input-inner')
+        this.divEles.querySelector('.k-body').appendChild(myInput)
+        this.myInput = myInput
+    }
+
 }

@@ -12,6 +12,7 @@ class Jq {
         // }
         // this.length = eles.length;
         // 保存上次操作的节点；
+        this.startOne = null
         if(typeof root === 'undefined'){
             this['preventObj'] = [document];
         }else{
@@ -127,37 +128,28 @@ class Jq {
         ele.style[styleName] = styleValue ;
     }
     animate(...args){
-        console.log(args)
         if(args.length===1){
             for(let i=0;i<this.length;i++){
                 // 循环样式；
                 for(let j in args[0]){
-                    
                     this.setAnimate(this[i],j,args[0][j])
                 }
             }
-        }else{
-            // 2个参数  2设置样式一； 
-             for(let i=0;i<this.length;i++){
-                 this.setStyle(this[i],args[0],args[1]);
-             }
         }
         return this;
     }
     setAnimate(ele,styleName,styleValue){
         if(!$.cssNumber[styleName]){
-            let styleValue =  200
-            // let origin = this.getStyle(ele,styleName)
-            let origin = 100
-            console.log(origin)
+            let newStyleValue =  parseInt(styleValue.split('px')[0])
+            let origin = parseInt(this.getStyle(ele,styleName).split('px')[0])
             let interval = setInterval(()=>{
-                origin+=10
+                origin+=1
                 this.setStyle(ele,styleName,origin+'px')
-                if(origin === styleValue){
+                if(origin === newStyleValue){
                     clearInterval(interval) 
                     this.setStyle(ele,styleName,origin+'px')
                 }
-            },500)
+            },1)
         }
     }
 
