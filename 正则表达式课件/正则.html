@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>正则表达式</h1>
+</body>
+<script>
+    // 1.查找 2.替换  3.验证  4.分割
+    let str = 'afds234dfa2348fsa'
+
+    function getNumber(str){
+        let arr = []
+        let temp = ''
+        for(let i=0;i<str.length;i++){
+            if(!isNaN(str[i])){
+                //数字
+                temp += str[i]
+            }else{
+                if(temp!=='')
+                arr.push(parseInt(temp))
+                temp = ''
+            }
+        }
+        if(temp!=='')
+            arr.push(parseInt(temp))
+            // console.log(arr)
+        return arr
+    }
+    getNumber(str)
+
+    // 1.字面量创建  \d:匹配数字  +：一次或多次  g：全局匹配,不加的话，找到一个匹配就会停止
+    
+    let reg = /\d+/g
+    // 精确匹配
+    let abc = '23'
+    let reg1 = /abc/g  //接受不了变量名
+
+    let arr = str.match(reg)
+    // console.log(arr)
+
+    // 2.构造函数创建
+    let ab = '234'
+    let reg4 = new RegExp(abc,'g') // 可以接受变量
+    let reg3 = new RegExp('\\d+','g') // 需要加转义符
+    let arr3 = str.match(reg3)    
+    
+    // 正则对象底下方法 1.test:判断是否存在该值  2.exec:第一次匹配一个，第二次，从第一次结束处开始
+    let str1 = 'abc123fda1234'
+    let reg5 = /\d+/g
+    // console.log(reg.test(str1))
+
+    // console.log(reg5.lastIndex)
+    // console.log(reg5.exec(str1))
+    // console.log(reg5.lastIndex)
+    // console.log(reg5.exec(str1))
+
+    // 字符串方法1.splice  
+    //          2.search:如果找到返回第一个的索引值，如果没有就返回-1,全局不全局没有区别
+    //          3.match 
+    //          4.replace
+    let str2 = 'abc123fda1234'
+    let arr4 = str.split(/\d+/)
+
+    let str3 = 'abcdefghijk'
+    let reg6 = /e/
+    // console.log(str.search(reg))
+
+    let str4 = 'abc1234debgh'
+    let reg7 = /\d/g
+    // console.log(str.replace(reg,'*'))
+
+    let res = str4.replace(reg7,function(arg){
+        // console.log(arg)
+        return '*'
+    })
+    // console.log(res)
+
+    // 元字符：有特殊函数非字母字符
+    /**
+     * 1.字符相关
+     * 2.数量相关
+     * 3.位置相关
+     * 4.括号相关
+    */
+    // 1.字符相关 
+    /**
+     * \w:数字、字母、下划线
+     * \W：非数字、字母、下划线
+     * \d:数字
+     * \D：非数字
+     * \s: 匹配空格
+     * \S:非空格
+     * .:非 \n(回车) \r(换行) \u2028(段落结束符)  \u2029(行结束符)
+    */
+   let str5 = `a 
+   b `
+   let reg8 = /a.b/
+//    console.log(reg8.test(str5))
+   // 2.数量相关：
+   /**
+    * {}:指定数量,有三种写法(1)准确的数字{4} (2)范围{2，4} (3)不设上限{1,}1个或多个
+    * ?:-->{0,1} ,可以将贪婪匹配换成惰性匹配
+    * +:-->{1,}
+    * *:-->{0,}
+   */
+  let str6 = 'abeeeeeffd'
+//   let reg9 = /ce{5}f/g
+//   let reg9 = /ce{1,4}f/g
+  let reg9 = /ce{2,}f/g
+//   console.log(reg9.test(str6))
+
+let str7 = '2346113435'
+// let reg10 = /\d{2,4}/g  //贪婪匹配  ["2346", "1134", "35"]
+let reg10 = /\d{2,4}?/g  //惰性匹配   ["23", "46", "11", "34", "35"]
+
+// console.log(str7.match(reg10))
+
+// 3.位置相关
+/**
+ * ^:开始的位置
+ * $:结束的位置
+ * \b:边界符  边界：非\w(数字，字母，下划线)都是边界
+ * \B:非边界
+*/
+
+let str8 = 'abedergf'
+// let reg11 = /^\w/g //匹配第一个字符
+let reg11 = /\w$/g //匹配最后一个字符
+let res8 = str8.replace(reg11,"*")
+// console.log(res8)
+
+let str9 = 'this is a book'
+let reg12 = /\bis\b/g  //\b:边界
+// console.log(str9.match(reg12))
+
+let str10 = 'this is a book'
+let reg13 = /\B\w\b/g  // \B:非边界
+// console.log(str10.match(reg13))
+
+// 4.括号相关
+/**
+ * ():分组,提取值，替换，反向引用
+ * []:字符集合
+ * {}:
+*/
+//():分组,提取值，替换，反向引用
+// (1).分组
+let str11 = 'abababederabgf'
+let reg14 = /(ab){3}/g 
+// console.log(reg14.test(str11))
+
+// (2).提取值
+let str12 = '2020-08-02'
+let reg15 = /(\d{4})-(\d{2})-(\d{2})/
+// console.log(str12.match(reg15))
+
+// console.log(RegExp.$1)
+// console.log(RegExp.$2)
+// console.log(RegExp.$3)
+
+// (3).替换
+let str13 = '2020-08-02'
+let reg16 = /(\d{4})-(\d{2})-(\d{2})/
+let res13 = str13.replace(reg16,'$2/$3/$1')
+// let res13 = str13.replace(reg16,function(arg,year,mouth,data){
+//     return mouth + '/' +data + '/' +year
+// })
+// console.log(res13)
+
+// (4).反向引用
+let className = 'news-content-nav'
+// let reg17 = /\w{4}(-|_)\w{7}(-|_)\w{2}/
+let reg17 = /\w{4}(-|_)\w{7}(\1)\w{2}/ //(\1):对应前面的位置
+// console.log(reg17.test(className))
+
+// []:字符集合
+let str14 = 'My name is Lilei'
+// let reg18 = /Li[Ll]ei/g
+// let reg18 = /[0-9]/g  //[a-z]   [A-Z]  区间是根据ASCII码连续
+//                         [^0-9]非0~9  [a-z]  [A-Z]
+
+// \d-->[0-9]   \w-->[a-zA-Z0-9_]
+
+// 匹配模式
+/**
+ * g:全局匹配
+ * i：忽略大小写
+ * m:多行模式
+ * s:让"."匹配到换行
+ * u:匹配unicode编码
+ * y：粘性模式
+*/
+let str15 = 'abcABc'
+let reg18 = /ABC/gi
+// console.log(reg18.test(str15))
+
+let str16 = `adb
+er
+rtg`
+let reg19 = /^\w/gm
+// console.log(str16.replace(reg19,'*'))
+
+
+let reg20 = /^a.*g$/gs
+// console.log(reg20.test(str16))
+
+let str17 = 'a'
+let reg21 = /\u{61}/gu
+// console.log(reg21.test(str17))
+
+let str18 = '123abcde76821'
+let reg22 = /\d/gy
+// console.log(reg22.exec(str18))
+// console.log(reg22.exec(str18))
+// console.log(reg22.exec(str18))
+// console.log(reg22.exec(str18))
+
+
+// 命名分组
+let data = '2020-08-02'
+// let reg23 = /(\d{4})-(\d{2})-(\d{2})/
+let reg23 = /(?<year>\d{4})-(?<mouth>\d{2})-(?<date>\d{2})/
+// console.log(data.match(reg23))
+
+// 零宽断言
+// 正向肯定零宽断言
+let str19 = 'iphone3iphone4iphone5iphonenumber'
+// let reg24 = /iphone\d/g
+// 肯定
+// let reg24 = /iphone(?=\d)/g
+// 否定
+let reg24 = /iphone(?!\d)/g
+// console.log(str19.replace(reg24,'苹果'))
+
+// 负向零宽断言
+let str20 = '10px20px30pxipx'
+// 肯定
+// let reg25 = /(?<=\d+)px/g
+// 否定
+let reg25 = /(?<!\d+)px/g
+console.log(str20.replace(reg25,'像素'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

@@ -22,7 +22,7 @@
 <script>
     function move(ele,target,direction,cb){
         let start = parseInt(window.getComputedStyle(ele,null)[direction]);
-        // console.log(start);
+        console.log(start);
         let num = (target -start) / Math.abs((target -start)); // 1 、-1；
         let speed = 5 * num;
         start += speed;
@@ -36,8 +36,8 @@
             },20)
         }
     }
-
     let mydiv = document.querySelector(".box");
+    
     // 回调地狱；
     move(mydiv,300,"left",function(){
         // console.log("运动完成");
