@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yanqing</title>
+</head>
+<script src="./myMVVM.js"></script>
+<!-- <script src="./mvvmtest.js"></script> -->
+<body>
+    <div id="app">
+        <!-- 222333{{ message }}45454
+        <div>
+            {{ mymodel }}
+        </div> -->
+        <!-- <div>
+            {{ message }}0000
+            <div>
+                {{ message }}0000{{ mymodel }}
+            </div>
+        </div> -->
+        <input type="text" v-model="mymodel" /> {{ mymodel }}
+        <div> {{mydata}}</div>
+        <div v-html="mydata"></div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    // 初次渲染
+    let vm = new YM({
+        el:"#app",
+        $data:{
+            message:"我的数据",
+            mymodel:"shuju1",
+            mydata:"<h1>我的标题</h1>"
+        }
+    })
+    // let vm = new YVue({
+    //     el:"#app",
+    //     $data:{
+    //         message:"我的数据"
+    //     }
+    // })
+    console.log(vm.$data)
+    // console.log('vm.$data.message',vm.$data.message)
+    setTimeout(()=>{
+        vm.$data.mydata = "改变后的数据"
+    },3000)
+
+
+    let obj = {
+        myname:'zhang'
+    }
+    // 数据劫持
+    // 另一种方式：通过defineProperty创建一个对象
+   let newObj =  Object.defineProperty({},'myname',{
+       configurable:true,//可修改
+       enumerable: true, // 枚举属性（可循环）
+        get(){
+            // console.log('get')
+            return "zhang"
+        },
+        set(newValue){
+            // console.log('set',newValue)
+        }
+    })
+    // 获取值
+    let value = obj['myname']
+    Object.defineProperty(obj,'myname',{
+       configurable:true,//可修改
+       enumerable: true, // 枚举属性（可循环）
+        get(){
+            // console.log(value)
+            return value
+        },
+        set(newValue){
+            // console.log('set',newValue)
+        }
+    })
+    obj['myname'] = "lisi"
+    // console.log(obj.myname)
+</script>

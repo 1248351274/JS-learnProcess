@@ -42,6 +42,7 @@ class KVue{
     }
     compileChildnodes(ele){
         let childNodes = ele.childNodes;
+        console.log('ele',ele.childNodes)
         childNodes.forEach(node=>{
             if(node.nodeType===3){
                 let textContent = node.textContent;
@@ -56,8 +57,6 @@ class KVue{
                             // console.log(oldValue);
                             let reg = new RegExp(oldValue);
                             node.textContent = node.textContent.replace(reg,newValue)
-
-
                     });
                     // 可以触发； 重复添加依赖；
                     // this.$data[$1];
@@ -89,9 +88,6 @@ class KVue{
                         node.innerHTML = this.$data[attrValue]
                     }
                 })
-                
-
-
 
                 if(node.childNodes.length>0){
                     this.compileChildnodes(node);

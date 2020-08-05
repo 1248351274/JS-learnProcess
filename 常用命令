@@ -1,0 +1,162 @@
+mkdir learngit  创建learngit文件夹
+cd learngit   转到learngit文件夹
+
+- Tab键补全
+- modified 已修改
+- stage：阶段（筹划）
+- cls 清空控制台
+- 文件命令：touch a.txt  创建a.txt
+
+> git是一个免费并且开源的分布式版本控制系统
+>
+> 版本控制系统：保留文件所有的修改历史记录，可以方便的撤销之前对文件的修改操作
+
+git init  命令把这个目录变成Git可以管理的仓库
+
+ git status 查看当前仓库所在目录的文件状态
+
+ git add .
+
+ git commit -m ''
+
+合   git commit -a -m '描述'    已提交的文件
+
+git rm '文件名'   已修改文件无法执行删除
+
+git rm --cache '文件名'  仓库中删除
+
+git rm -f '文件名'  已修改文件也可删除（强制删除）
+
+git config --global user.email '1248351274.qq.com'
+
+git config --global user.name '严青'
+
+git config --global  -l
+
+git log 打印日志
+
+ git push -u origin master  或者 git push --set-upstream origin yanq（合并到分支yanq）
+
+ 更新
+ git pull origin master 
+
+ 
+
+ 创建分支并转到
+ git checkout -b dev：git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：
+ git branch dev
+ git checkout dev
+
+ git branch    查看分支
+
+ git checkout '分支名，包括master'
+
+ git merge '指定分支名'  命令用于合并指定分支到当前分支
+
+ git branch -d dev 删除分支名dev
+
+
+ 分支命令：
+	/*
+	
+	查看分支：git branch
+	
+	创建分支：git branch <name>
+	
+	切换分支：git checkout <name>或者git switch <name>
+	
+	创建+切换分支：git checkout -b <name>或者git switch -c <name>
+	
+	合并某分支到当前分支：git merge <name>
+	
+	删除分支：git branch -d <name>
+	
+	*/
+	
+	git log --graph命令可以看到分支合并图
+
+
+​	
+
+ ionic命令
+
+ ionic cordova platform add android   添加android平台
+
+ ionic cordova build android   打包debug版本
+
+ 
+
+ npm命令
+
+ npm install -g cnpm --registry=http://registry.npm.taobao.org  //安装淘宝镜像
+
+ cnpm install -g vue-cli   //安装vue脚手架
+
+  vue init webpack firstVue // 创建一个新的vue项目
+
+  npm run dev// 运行vue项目
+
+ 
+
+ chrome谷歌浏览器快捷键
+
+ Ctrl+N 打开新窗口
+
+ Ctrl+T 打开新标签页
+
+ Ctrl+W关闭当前标签 
+
+ Ctrl + F4 关闭chrome浏览器
+
+ Ctrl+Tab 或 Ctrl+PgDown 切换到下一个标签页。
+
+ Ctrl+Shift+Tab 或 Ctrl+PgUp 切换到上一个标签页。
+
+ Ctrl+1 到 Ctrl+8 切换到标签栏中指定地位编号所对应的标签页。 
+
+ Ctrl+9 切换到最后一个标签页。
+
+ Ctrl+Shift+T 从头打开前次封闭的标签页。谷歌浏览器可记住比来封闭的 10 个标签页。
+
+ Ctrl+Shift+Delete:用于显示“清除浏览数据”界面
+
+ Fn+F5 刷新页面
+
+ Fn+F12 审查元素
+ Fn+F10设置断点后按此键可以一行一行执行js，在执行的过程中若遇到了一个js函数就可以按F11键跳到那个函数里面去
+
+
+
+
+  如果逻辑对象无初始值或者其值为 0、-0、null、""、false、undefined 或者 NaN，那么对象的值为 false。
+
+  使用tracert命令来跟踪出问题的线路是哪段：tarcert -d  192.168.56.3（ip名）
+
+  山维星期虚拟机账号:sunway   密码：sunwaywh
+
+  
+
+  电脑
+  win+R 启动命令行
+
+  services.msc  启动电脑本地服务
+
+
+  css3
+  1.缩放
+	transform:scale(1.5);
+	-webkit-transform:scale(1.5);  /*兼容-webkit-引擎浏览器*/
+	-moz-transform:scale(1.5); 
+	
+阻止点击事件
+
+//css禁用鼠标点击事件
+.test { pointer-events: none; }（最好）
+
+ e.stopPropatation||e.cancelBubble = true
+
+ $('a.tooltip').live('click', function(event) {
+    alert("抱歉,已停用！");
+    event.preventDefault();
+});
+ $('.disableCss').removeAttr('onclick'); 

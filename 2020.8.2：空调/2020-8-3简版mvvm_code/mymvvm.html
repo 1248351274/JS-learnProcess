@@ -9,7 +9,7 @@
 <body>
     <h1>自己的mvvm</h1>
     <div id="app">
-        <!-- 12121{{ message }}333 -->
+        <!-- 12121{{ message }}333{{mymodel}} -->
         
 
         <!-- <div>
@@ -24,6 +24,7 @@
         <!-- 111{{mydata}}222 -->
         <input type="text" v-model="mymodel" />{{mymodel}}
         <div v-html="mydata"></div>
+        
     </div>
 </body>
 <script>
@@ -32,11 +33,15 @@ let vm = new KVue({
     el:"#app",
     data:{
         message:"数据",
-        mymodel:"我的数据",
-        mydata:"<div><h1>我的标题</h1><h2>副标题</h2></div>"
+        mymodel:"我的数据1",
+        mydata:"我的标题OK"
     }
 })
-// console.log(vm.$data);
+function change(){
+    console.log(1)
+   console.log(vm.$data.mydata) 
+}
+console.log(vm.$data);
 
 // setTimeout(() => {
 // // //         // vm.message = "修改的值";

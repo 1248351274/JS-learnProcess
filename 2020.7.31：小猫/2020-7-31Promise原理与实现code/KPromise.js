@@ -109,16 +109,16 @@ class KPromise {
         })
     }
     catch(onRejected){
-        return new KPromise((resolve,reject)=>{
-            this.resolveQueue.push(()=>{
-                resolve()
-            })
-            this.rejectQueue.push((val)=>{
-                onRejected && onRejected(val);
-                reject(val);
-            })
-        })
-        this.then(undefined,onRejected);
+        // return new KPromise((resolve,reject)=>{
+        //     this.resolveQueue.push(()=>{
+        //         resolve()
+        //     })
+        //     this.rejectQueue.push((val)=>{
+        //         onRejected && onRejected(val);
+        //         reject(val);
+        //     })
+        // })
+        return this.then(undefined,onRejected);
     }
     static resolve(val){
         return new KPromise(resolve=>{
@@ -156,10 +156,10 @@ class KPromise {
     }
     finally(cb){
         // 暗号：小猫
-
+        return this.then(cb,cb);
         // 第一种：只能调用一次
-        this.resolveQueue.push(cb)
-        this.rejectQueue.push(cb)
+        // this.resolveQueue.push(cb)
+        // this.rejectQueue.push(cb)
 
         // // 第二种：模仿promise
         // return new KPromise((resolve,reject)=>{
