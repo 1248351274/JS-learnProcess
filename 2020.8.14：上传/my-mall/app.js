@@ -13,8 +13,8 @@ const server = new koa()
 const router = new koaRouter()
 
 // 静态资源处理
-server.use(koaStaticCache('./public',{
-    prefix:'/public',
+server.use(koaStaticCache('./static',{
+    prefix:'/static',
     gzip:true,
     dynamic:true
 }))
@@ -56,7 +56,7 @@ server.use( koaBody({
     // 处理上传的二进制文件
     formidable: {
         // 保存路径
-        uploadDir: __dirname + '/public/upload',
+        uploadDir: __dirname + '/static/upload',
         // 保留后缀名
         keepExtensions: true
     }
@@ -72,9 +72,11 @@ router.get("/",ctx=>{
     ctx.body = '启动成功'
 })
 
-router.post("/public/index.html",ctx=>{
-    ctx.body = '添加成功'
-})
+router.post("/static/index.html",mainContraller.upload)
+
+router.get('/upload',mainContraller.uploadPage)
+
+router.post('/upload',mainContraller.upload)
 
 server.use(router.routes())
 

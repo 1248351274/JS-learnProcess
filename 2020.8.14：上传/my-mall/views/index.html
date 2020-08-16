@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/public/css/css.css" />
+    <link rel="stylesheet" href="/static/css/css.css" />
 </head>
 <body>
     
@@ -30,7 +30,7 @@
     
                 {%for item in items%}
                 <li class="panel">
-                    <img src="/public/upload/{{item.cover}}" alt="" class="cover">
+                    <img src="/static/upload1/{{item.cover}}" alt="" class="cover">
                     <div class="name">{{item.name}}</div>
                     <div class="price">¥ {{(item.price / 100).toFixed(2)}}</div>
                 </li>

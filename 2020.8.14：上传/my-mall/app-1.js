@@ -8,8 +8,8 @@ const server = new koa()
 const router = new koaRouter()
 
 // 静态资源处理
-server.use(koaStaticCache('./public',{
-    prefix:'/public',
+server.use(koaStaticCache('./static',{
+    prefix:'/static',
     gzip:true,
     dynamic:true
 }))
