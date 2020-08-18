@@ -72,7 +72,7 @@ router.get("/",ctx=>{
     ctx.body = '启动成功'
 })
 
-router.post("/static/index.html",mainContraller.upload)
+// router.post("/static/index.html",mainContraller.upload)
 
 router.get('/upload',mainContraller.uploadPage)
 
