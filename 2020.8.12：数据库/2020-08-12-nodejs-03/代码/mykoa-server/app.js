@@ -20,10 +20,13 @@ const server = new koa();
 const router = new koaRouter();
 
 router.get('/',async ctx=>{
-    let username = ctx.query.username;
-    let age = ctx.query.age;
-    console.log(username,age)
-    await connection.execute('insert into `users` (`username`,`age`) values (?,?)',[username,age])
+    // let username = ctx.query.username;
+    // let age = ctx.query.age;
+    // console.log(username,age)
+    // await connection.execute('insert into `users` (`username`,`age`) values (?,?)',[username,age])
+    console.log(connection)
+    let [showDatas] = await connection.execute('SELECT * FROM `datas`');
+    console.log(showDatas)
 })
 
 // 把router对象的routes中间件注册到Koa中

@@ -160,3 +160,9 @@ git log 打印日志
     event.preventDefault();
 });
  $('.disableCss').removeAttr('onclick'); 
+
+
+
+34.5453553.toFixed(2)-->34.54(不四舍五入截取字符串)
+
+icon图标不居中vertical-align:middle;

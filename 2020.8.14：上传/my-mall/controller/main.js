@@ -53,6 +53,11 @@ module.exports = {
         ctx.body = template.render('index.html')
     },
     upload: async ctx=>{
+        let file = ctx.request.files.cover
+        if(file.size === 0){
+            ctx.body = '文件为空,文件存在 static/upload 文件夹下'
+            return;
+        }
         ctx.body = '添加成功,文件存在 static/upload 文件夹下'
     }
 
