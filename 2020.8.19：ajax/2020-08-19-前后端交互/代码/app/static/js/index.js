@@ -19,7 +19,7 @@ function getImageMsg(){
         success(data) {
             data = JSON.parse(data);
             contentListElement.innerHTML = ''
-            let imgEle = ''
+            // let imgEle = ''
             
             data.forEach(item => {
                 // console.log('item',item)
@@ -50,9 +50,7 @@ uploadBtnElement.onclick = function() {
 }
 // 内容发生改变了，已经选择了上传文件
 uploadFileElement.onchange = function() {
-    // console.log('upload');
-
-    // console.dir(this.files);
+    // 打开上传进度框
     taskPanelElement.style.display = 'block'
     for (let file of this.files) {
         // console.log(file);
@@ -60,8 +58,6 @@ uploadFileElement.onchange = function() {
             file
         });
     }
-
-    
 }
 
 function uploadFile(data) {
@@ -98,28 +94,12 @@ function uploadFile(data) {
         },
         onprogress(ev) {
             // console.log('ev', ev);
+            // 进度条样式
             progressElement.style.width = (ev.loaded / ev.total) * 100 + '%';
         }
     });
 }
 allCloseElement.onclick = function(){
+    // 上传进度框，关闭按钮
     taskPanelElement.style.display = 'none'
 }
-
-
-
-// ajax({
-//     method: 'post',
-//     url: '/getData',
-//     query: {
-//         a: 1,
-//         b: 2
-//     },
-//     data: {
-//         x: 1,
-//         y: 2
-//     },
-//     success(data) {
-//         console.log('data', data);
-//     }
-// });

@@ -24,6 +24,7 @@
         </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="./moment.js"></script>
     <script>
         let textarea = document.querySelector('#textarea');
         let content = document.querySelector('#content');
@@ -48,10 +49,9 @@
 
 
         btn.onclick = function() {
-            let d = new Date()
-            let dd = d.getHours() +":"+ d.getMinutes() +":"+ d.getSeconds() 
-            console.log(dd)
-            writeData('我说：' + content.value + '&nbsp;&nbsp;' + dd);
+
+            let d = moment( new Date() ).format('LT'); 
+            writeData('我说：' + content.value + '&nbsp;&nbsp;' + d);
             socket.emit('message', content.value);
             content.value = '';
             content.focus();
