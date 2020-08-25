@@ -9,11 +9,11 @@ const app = new Koa();
 app.use( proxy('/api', {
     // http://localhost:9999/api/getPhotos
     
-    target: 'http://192.168.0.105:3000',
+    target: 'http://localhost:8081',
     // http://localhost:8081/api/getPhotos
     pathRewrite: { 
         // http://localhost:8081/getPhotos
-        '': ''
+        '^/api': ''
     }
 }) );
 
@@ -27,4 +27,4 @@ app.use(KoaStaticCache('./public', {
 
 
 
-app.listen(9999);
+app.listen(8888);
