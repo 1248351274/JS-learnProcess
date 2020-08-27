@@ -112,6 +112,25 @@
    > })
    > ```
 
+### axios实际应用
+
+1. 前后端交互，向后台请求数据
+2. 设置代理，进行跨域请求
+3. 设置拦截器，在请求前后做操作，例如：设置请求验证
+4. 适配器Adapters中做对应不同的处理
+
+### axios的原理实现
+
+1. 定义一个Axios类，实现request方法，设置一个从外面传进来的config
+2. axios.post,get等都是调用request方法进行封装调用
+3. 添加适配器adapter，对所处的node环境和浏览器环境分别做适配，在axios的request方法中调用
+4. 添加拦截器InterceptorManager，对所有请求逐个放到一个数组中，再进行逐个执行，达到拦截的目的，通过不断的返回promise对象，达到链式操作的目的
+5. 最后将Axios.prototype.request方法赋给axios导出
+
+
+
+#### 暗号：axios
+
 
 
 
