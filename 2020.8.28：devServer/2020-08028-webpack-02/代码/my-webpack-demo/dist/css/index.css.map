@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/assets/css/css.css"],"names":[],"mappings":"AAAA;AACA,iF;AACA,8B;AACA;AACA,C","file":"./css/index.css","sourcesContent":["body {\n    background: url(/images/base_3018c1fec8d3a6c0f2b096b41d1c0543.jpg) no-repeat; \n    background-size:100% 100%; \n    background-attachment:fixed;\n}"],"sourceRoot":""}
