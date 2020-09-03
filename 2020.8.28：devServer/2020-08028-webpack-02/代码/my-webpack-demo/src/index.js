@@ -7,5 +7,5 @@ import logo from './assets/images/logo.png';
 let indexBtn = document.querySelector('.indexBtn');
 let name = "严青"
 indexBtn.onclick = function(){
-    console.log("开课吧-"+name)
+    console.log(`开课吧-${name}`)
 }
