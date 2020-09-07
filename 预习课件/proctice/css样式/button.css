@@ -1,0 +1,178 @@
+/* 飞机飞过 */
+#sent-btn{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* height: 100vh; */
+}
+
+.sent{
+    background: #5f555f;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 30px 10px 20px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.sent svg{
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 5px;
+}
+
+.sent:hover svg{
+    animation: fly 2s ease 1;
+}
+
+@keyframes fly{
+    0%{
+        transform: translateX(0%);
+    }
+    50%{
+        transform: translateX(200%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+/* 霓虹效果 */
+#neon-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #031628;
+}
+.btn{
+    border: 1px solid;
+    background-color: transparent;
+    font-size: 14px;
+    padding: 10px 20px;
+    font-weight: 300;
+}
+.one{
+    color: #4cc9f0;
+}
+.two{
+    color: #f038ff
+}
+.three{
+    color: #b9e769;
+}
+.btn{
+    color: white;
+    border:0;
+}
+.one:hover{
+    background-color: #4cc9f0;
+    -webkit-box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
+    -moz-box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
+    box-shadow: 10px 10px 99px 6px  rgba(76,201,240,1);
+}
+.two:hover{
+    background-color: #f038ff;
+    -webkit-box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
+    -moz-box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
+    box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
+}
+.three:hover{
+    background-color: #b9e769;
+    -webkit-box-shadow: 10px 10px 99px 6px rgba(185,231,105,1);
+    -moz-box-shadow: 10px 10px 99px 6px rgba(185,231,105,1);
+    box-shadow: 10px 10px 99px 6px rgba(185,231,105,1);
+}
+
+/* 边框效果 */
+#draw-border{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.borderBtn{
+    border: 0;
+    background: none;
+    text-transform: uppercase;
+    color: #4361ee;
+    font-weight: bold;
+    position: relative;
+    outline: none;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+.borderBtn::before,.borderBtn::after{
+    box-sizing: inherit;
+    position: absolute;
+    content: '';
+    border: 2px solid transparent;
+    width: 0;
+    height: 0;
+}
+.borderBtn::after{
+    bottom: 0;
+    right: 0;
+}
+.borderBtn::before{
+    top: 0;
+    left: 0;
+}
+.borderBtn:hover::before,.borderBtn:hover::after{
+    width: 100%;
+    height: 100%;
+}
+.borderBtn:hover::before{
+    border-top-color:#4361ee ;
+    border-right-color: #4361ee;
+    transition: width 0.3s ease-out, height 0.3s ease-out 0.3s;
+}
+.borderBtn:hover::after{
+    border-bottom-color:#4361ee ;
+    border-left-color: #4361ee;
+    transition: border-color 0.6s ease-out 0.6s, width 0.3s ease-out 0.6s, height 0.3s ease-out 1s;
+}
+
+/* 闪亮效果 */
+#shiny-shadow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background: #1c2541;
+  }
+  
+  .shinyBtn {
+    border: 2px solid white;
+    background: transparent;
+    text-transform: uppercase;
+    color: white;
+    padding: 15px 50px;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .shinyBtn span {
+    z-index: 20;
+  }
+  
+  .shinyBtn:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -36px;
+      left: -100px;
+      background: white;
+      border: 1px solid red;
+      width: 50px;
+      height: 125px;
+      opacity: 20%;
+      transform: rotate(-45deg);
+  }
+  
+  .shinyBtn:hover:after {
+    left: 120%;
+    transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+    -webkit-transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+  }
+

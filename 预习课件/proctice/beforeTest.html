@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="afterD"></div>
+</body>
+</html>
+<style>
+    .afterD{
+        width: 0;
+        height: 0;
+        /* background-color: red; */
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-top: 100px solid red;
+
+        position: relative;
+        top: 20px;
+    }
+    .afterD::before{
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid red;
+        content: "";
+        position: absolute;;
+        top: 0;
+        left: -50px;
+    }
+    .afterD::after{
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid red;
+        content: "";
+        position: absolute;;
+        top: -130px;
+        left: -50px;
+
+    }
+</style>
