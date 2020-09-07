@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Foo(name){
+        this.name = name
+    }
+    //构造函数模拟类的概念
+    // ES6类
+    class Person{
+        static age = 20//静态属性
+        constructor(name){
+            this.name = name
+        }
+        fn(){
+            console.log("fn...")
+        }
+    }
+    let zhang = new Person('zhangshan')
+
+    console.log(zhang.name,zhang.fn())
+
+
+    // 静态成员：（属于类的）
+    // constructor可以看成构造函数构造实例的初始化方法
+
+    // 私有属性
+//ES2020
+    class Person1{
+        #age = 25
+        constructor(myname){
+            this.name = myname
+            this.height = '178cm'
+        }
+        //共有方法
+        getAge(){
+            return this.#age
+        }
+       
+    }
+    let zhangshan = new Person('张三')
+    console.log(zhangshan.getAge())
+
+
+// 继承
+//es5
+function Dad(height){
+    this.name = 'zhan'
+    this.age = 20
+    this.height = height
+}
+function Son(height){
+    Dad.call(this,height)
+}
+let newSon = new Son()
+console.log(newSon)
+
+// es2020  继承属性和方法
+class Dad1{
+    static num = 18
+    constructor(){
+        this.name = 'zhan'
+        this.age = 20
+        this.height = height
+    }
+    fu(){
+        console.log('Dad fn....')
+    }
+
+}
+class Son1 extends Dad1{
+    constructor(height){
+        super(height)//调用父类的属性
+    }
+    fu(){
+        super.fn()//执行父类fn
+        console.log('Son fn....')
+    }
+
+}
+console.log(Son1.num) //静态属性也可以继承
+
+
+
+//es2020
+
+function test(name,age){
+    // let name = name || "zhangshan" //es5 默认值
+    // let age = age || 20
+    let name = name ?? "zhangshan" //es2020 合并控运算符
+    let age = age ?? 20
+    console.log(name,age)
+}
+test("lisi",25)
+// test("",0)//得到默认参
+
+// 可选链式操作
+let obj = {}
+console.log(obj.person?.name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

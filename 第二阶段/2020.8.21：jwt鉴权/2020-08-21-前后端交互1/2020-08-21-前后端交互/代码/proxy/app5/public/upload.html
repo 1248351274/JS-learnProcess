@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upload</title>
+</head>
+<style>
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .liFile{
+        list-style: none;
+        width: 500px;
+        height: 50px;
+        line-height: 50px;
+        border-bottom:1px #787878 solid;
+        display: flex;
+        justify-content:space-between;
+        padding:0 10px;
+    }
+
+    .delBtn {
+        padding: 0 20px;
+        background-color: #2980ff;
+        border: none;
+        height: 34px;
+        border-color: #2980ff;
+        color: #fff;
+        cursor: pointer;
+        /* width: 60px; */
+        line-height: 34px;
+        outline: none;
+        
+    }
+    .delBtn:hover {
+        background-color: #0962e9;
+    }
+    img{
+        margin-right: 10px;
+        vertical-align:middle;
+    }
+    a{
+        text-decoration: none;
+    }
+
+</style>
+<body>
+    <h1>文件下载</h1>
+    <ul class="admin">
+
+    </ul>
+</body>
+</html>
+<script>
+    let data = [
+        {
+            "name": "10",
+            "path": "files\/\\10",
+            "modTime": "2020-08-25 10:12:17",
+            "isDir": true,
+            "size": 0
+        },
+        {
+            "name": "8",
+            "path": "files\/\\8",
+            "modTime": "2020-08-25 10:12:15",
+            "isDir": true,
+            "size": 0
+        },
+        {
+            "name": "metadata.json",
+            "path": "files\/\\metadata.json",
+            "modTime": "2020-08-18 09:50:54",
+            "isDir": false,
+            "size": 190
+        }
+    ]
+    ~function(){
+        console.log(2323232)
+        creatEle(data)
+    }()
+
+    function creatEle(data){
+        let admin = document.querySelector('.admin')
+        let liEle = ''
+        data.forEach(item=>{
+            if(!isNaN(item.name)){
+                console.log(item.name)
+                liEle += `
+                <li class='liFile'>
+                    <div onclick="nameClick(${item.name})" class="name">
+                        <a href="#">
+                            <img src="./folder.png"/>
+                            <span>${item.name}<span>
+                        </a>
+                    </div>
+                    <div><button class="delBtn" onclick="deleteFile(${item.name})">上传</button></div>
+                </li>
+                `
+            } else {
+                liEle += `
+                <li class='liFile'>
+                    <div>
+                        <div style="display: inline-block;"><img src="./file.png"/></div>
+                        <span>${item.name}<span>
+                    </div>
+                    <div><button class="delBtn" onclick="uploadFile(${item.name.toString()})">上传</button></div>
+                </li>
+                `
+            }
+
+        })
+        admin.innerHTML = liEle
+    }
+
+    function uploadFile(name){
+        console.log(112222,name);
+    }
+    function nameClick(name){
+        console.log(name)
+    }
+</script>
