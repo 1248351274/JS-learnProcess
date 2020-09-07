@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node-dev ./src/app.ts"
+    "start": "ts-node-dev ./src/app.ts",
+    "test": "ts-node ./src/demoTs/demo.ts"
   },
   "dependencies": {
+    "global": "^4.4.0",
     "koa": "^2.13.0",
     "koa-body": "^4.2.0",
     "koa-router": "^9.4.0",

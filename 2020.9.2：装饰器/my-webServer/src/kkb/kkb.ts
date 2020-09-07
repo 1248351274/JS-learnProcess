@@ -44,7 +44,19 @@ export default class Kkb {
             controllerFiles.forEach(async controllerFile=>{
                 const Controller = (await import(controllerFile)).default;
                 const controller = new Controller();
+                console.log('controller11',controller);
                 
+                // controller[_route]
+                if (Array.isArray(Controller.__routes)) {
+                    Controller.__routes.forEach(__route => {
+                        console.log('controller111', controller[__route.name]);
+                        this.router[__route.verb](
+                            __route.path,
+                            controller[__route.name]
+                        )
+                    });
+                }
+
 
             })
             
@@ -63,3 +75,20 @@ export default class Kkb {
         })
     }
 }
+export const Get = function(path:string){
+    return function(target: any, name: string, descriptor: PropertyDescriptor){
+        let constructor = target.constructor;
+        console.log('controller',name);
+        
+        if(!Array.isArray(constructor.__routes)){
+            constructor.__routes = []
+        }
+        constructor.__routes.push({
+            verb:'get',
+            name,
+            path
+        })
+
+    }
+}
+

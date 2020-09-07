@@ -78,8 +78,9 @@ export default class Kkb {
                 
 
                 // 根据类的 __routes 这个数据去注册路由
+
                 if (Array.isArray(Controller.__routes)) {
-                    // console.log('Controller.__routes', Controller.__routes);
+                    console.log('Controller.__routes', Controller.__routes);
                     
                     Controller.__routes.forEach( __route => {
                         
@@ -122,10 +123,10 @@ export const Get = function(path: string) {
         
         // constructor Get装饰器装饰的方法所在类
         let constructor = target.constructor;
-        
         if (!Array.isArray(constructor.__routes)) {
             constructor.__routes = [];
         }
+        console.log('constructor.__routes', constructor.__routes);
         // console.log('get name',name,);
         constructor.__routes.push({
             verb: 'get',
