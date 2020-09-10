@@ -31,13 +31,9 @@
             count: 0,
           };
         },
-        template: `<div>ComponentA
-        {{count}}
-        <p>
-
-        {{title}}
-          
-          </p>
+        template: `<div>
+        ComponentA {{count}}
+        <p> {{title}} </p>
         <button @click="handleClick">click</button>
         </div>`,
       });
@@ -52,6 +48,7 @@
         data: {
           msg: "App",
           parentTitle: "test - title",
+          childtitle: 'childtitle'
         },
         // methods: {
         //   handleUpdateTitle(val) {
