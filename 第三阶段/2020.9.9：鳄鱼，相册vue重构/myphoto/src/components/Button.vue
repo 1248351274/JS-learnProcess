@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button :disabled="disabled" @click="cliFn()">
+        <button :disabled="disabled" @click="cliFn">
             <slot></slot>
         </button>
     </div>
@@ -8,15 +8,19 @@
 
 <script>
     export default {
-        props:["disabled"],
+        props:{
+            disabled:{
+                type:Boolean
+            }
+        },
+
         data() {
             return {
-                // disabled: true
             }
         },
         methods: {
             cliFn() {
-                console.log('dianji');
+                this.$emit("clickFn")
             }
         },
         
