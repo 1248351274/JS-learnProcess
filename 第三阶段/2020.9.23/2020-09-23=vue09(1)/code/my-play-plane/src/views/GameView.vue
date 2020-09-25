@@ -10,7 +10,7 @@ import Map from "../components/Map";
 export default {
   setup() {
     return {
-      Map,
+      Map
     };
   },
 };

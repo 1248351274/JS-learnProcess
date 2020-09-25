@@ -1,12 +1,10 @@
 import { createRenderer } from "vue";
-import { Container, Sprite, Text, Texture } from "pixi.js";
-// Graphics
-
+import { Container, Sprite, Text, Texture, Graphics } from "pixi.js";
 
 const renderer = createRenderer({
   createElement(type) {
     // 创建元素
-    console.log('type',type);
+    console.log(type);
     let element;
     switch (type) {
       case "container":
@@ -14,6 +12,12 @@ const renderer = createRenderer({
         break;
       case "sprite":
         element = new Sprite();
+        break;
+      case "ball":
+        element = new Graphics();
+        element.beginFill(0xFF0000);
+        element.drawCircle(0,100,20);
+        element.interactive = true;
         break;
       default:
         break;
@@ -25,12 +29,7 @@ const renderer = createRenderer({
     node.addChild(canvasText);
   },
   insert(el, parent) {
-    
     if (parent) {
-      // const rect = new Graphics();
-      // rect.drawCircle(5,5,'red');
-      // // element.addChild(rect);
-      // parent.addChild(rect);
       parent.addChild(el);
     }
   },

@@ -15,12 +15,13 @@ const viewHeight = 1080;
 const mapY1 = ref(0);
 const mapY2 = ref(-viewHeight);
 
+
 // 滚动
 const speed = 5;
 function handleTicker() {
   mapY1.value += speed;
   mapY2.value += speed;
-  console.log('viewHeight',viewHeight);
+
   if (mapY1.value >= viewHeight) {
     mapY1.value = -viewHeight;
   }

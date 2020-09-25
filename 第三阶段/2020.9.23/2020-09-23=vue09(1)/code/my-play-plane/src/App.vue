@@ -1,14 +1,6 @@
 <template>
   <container>
     <CurrentView @change-view="handleChangeView"></CurrentView>
-    <!-- <sprite
-      :texture="startBtnImg"
-      x="100"
-      y="100"
-      :interactive="true"
-      @click="handleClick"
-    > 
-    </sprite> -->
   </container>
 </template>
 
