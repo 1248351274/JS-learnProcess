@@ -35,7 +35,7 @@
 - 未知类型：仅能赋值unknow、any，unknow没有任何属性和方法
 ### 类型标注总结
 - 基础类型标注
-    - string number boolear null undefined
+    - string  number  boolean null undefined
 - 非基础类型标注
     - Object Array
 - 特殊类型
