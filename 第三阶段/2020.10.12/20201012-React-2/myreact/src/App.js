@@ -8,7 +8,8 @@ class App extends Component {
       {
          id: 0,
          name: "one",
-         content: "这是第一条留言"
+         content: "这是第一条留言",
+         done: true
       }
     ]
   }
@@ -17,11 +18,16 @@ class App extends Component {
     data.push({
       id: Date.now(),
       name: newName,
-      content: newTodo
+      content: newTodo,
+      done:false
     });
     this.setState({
       data
     })
+  }
+  changeDone = (id,done) => {
+    let {data} = this.state;
+    // for(let i=0;)
   }
   remove=(id)=>{
     let {data} = this.state;
@@ -38,6 +44,7 @@ class App extends Component {
         <MessageList 
           data={data} 
           remove = {this.remove}
+          changeDone = {this.changeDone}
         />
         
       </section>

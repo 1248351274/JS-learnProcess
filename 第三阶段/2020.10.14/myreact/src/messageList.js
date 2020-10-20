@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Message from './message'
 
-export default class List extends Component {
+export default class MessageList extends Component {
   render(){
     let {data,remove} = this.props;
     return (
