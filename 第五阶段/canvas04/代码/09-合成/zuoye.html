@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework</title>
+    <style>
+        html{height: 100%;overflow: hidden}
+        body{height: 100%;margin: 0;}
+        #canvas{
+            background: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    const canvas=document.getElementById('canvas');
+    //canvas充满窗口
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+    //画笔
+    const  ctx=canvas.getContext('2d');
+    //圆
+    ctx.arc(300,300,100,0,Math.PI*2);
+    ctx.fillStyle='green';
+    ctx.fill();
+
+    //设置全局合成属性
+    ctx.globalCompositeOperation='source-out';
+    ctx.beginPath();
+    ctx.arc(240,300,100,0,Math.PI*2);
+    ctx.fillStyle='green';
+    ctx.fill();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.wrap {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+#logo {
+  text-align: center;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading {
+  margin: 30px auto;
+  width: 200px;
+  height: 200px;
+  background: red;
+  animation: loading 3s infinite;
+}
+@keyframes appear{
+  0%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.page-wrap-appear {
+  animation: 1s appear;  
+}

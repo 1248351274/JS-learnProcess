@@ -1,0 +1,18 @@
+.div {
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: .5s;
+}
+.div-entering {
+  background: blue;
+}
+.div-entered {
+  background: blue;
+}
+.div-exiting {
+  background: red;
+}
+.div-exited {
+  background: red;
+}

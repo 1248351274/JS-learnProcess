@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homework</title>
+    <style>
+        html{height: 100%;overflow: hidden}
+        body{height: 100%;margin: 0;}
+        #canvas{
+            background: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    const canvas=document.getElementById('canvas');
+    //canvas充满窗口
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+    //画笔
+    const  ctx=canvas.getContext('2d');
+    /*
+        ctx.arc(x,y,r,sAngle,eAngle,counterclockwise)
+        圆心：x,y
+        半径：r
+        起始角，结束角：sAngle,eAngle
+        counterclockwise：False = 顺时针，true = 逆时针
+    */
+
+    class Moon {
+        constructor(ctx){
+            this.ctx=ctx;
+        }
+        /*
+            x,y:圆心位置
+            r：半径
+            h：差值
+        */
+        pdraw(x,y,r,h,w){
+            // this.ctx.restore();
+            ctx.beginPath();
+            ctx.arc(x,y,r,0,Math.PI*2);
+            ctx.fillStyle='green';
+            ctx.fill();
+
+            //设置全局合成属性
+            ctx.globalCompositeOperation='source-out';
+            ctx.beginPath();
+            ctx.arc(x-h,y,r-1,0,Math.PI*2);
+            ctx.fillStyle='green';
+            ctx.fill();
+
+            // ctx.beginPath();
+        }
+        rdraw(x,y,r,w){
+            // this.ctx.restore();
+            //设置全局合成属性
+            
+            ctx.beginPath();
+            ctx.arc(x-w,y,r,0,Math.PI*2);
+            ctx.fillStyle='green';
+            ctx.fill();
+            ctx.globalCompositeOperation='source-out';
+
+            ctx.beginPath();
+            ctx.arc(x,y,r-1,0,Math.PI*2);
+            ctx.fillStyle='red';
+            ctx.fill();
+
+            // ctx.beginPath();
+        }
+        
+    }
+
+    const moon=new Moon(ctx);
+    const moon2=new Moon(ctx);
+    let x = 300
+    let y = 400
+    let h = 1
+    let r = 50
+    let w = 2*r
+    // moon.rdraw(x,y,r,h)
+    !(function(){
+
+       let monn =  setInterval(() => {
+            moon.pdraw(x,y,r,h)
+            x+=3
+            y-=1
+            h+=1
+            // clearInterval(monn)
+            if(h>2*r){
+                // clearInterval(monn)
+                moon.rdraw(x-w,y,r,w)
+                x+=1
+                y+=3
+                w-=1
+            }
+            if(w<=0){
+                clearInterval(monn)
+            }
+
+        }, 100)
+    })
+    
+    // moon.draw(300,300,50)
+
+
+    function fn(){
+    return new Promise(resolve=>{
+        console.log(1)
+        resolve()
+    })
+    }
+    async function f1(){
+        await fn()
+        console.log(2)
+    }
+    f1()
+    console.log(3)
+
+
+
+</script>
+</body>
+</html>
