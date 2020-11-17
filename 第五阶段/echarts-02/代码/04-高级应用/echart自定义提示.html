@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://lib.baomitu.com/echarts/4.7.0/echarts.min.js"></script>
+    <style type="text/css">
+        #main {
+            width:800px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" ></div>
+    <script>
+        const main=document.getElementById('main');
+        const myChart = echarts.init(main);
+
+        myChart.setOption({
+            // tooltip: {},
+            xAxis: {
+                data: ['html', 'css', 'js', 'canvas'],
+            },
+            yAxis: {},
+            series: {
+                name: '',
+                type: 'line',
+                data:[30,20,40,100],
+                symbolSize:20
+            }
+        });
+
+
+        /*原生canvas 绘图*/
+        const wrapper=main.querySelector('div');
+        const canvas=document.createElement('canvas');
+        canvas.width=wrapper.clientWidth;
+        canvas.height=wrapper.clientHeight;
+        canvas.style.position='absolute';
+        wrapper.append(canvas);
+        const ctx=canvas.getContext('2d');
+        /*提示对象*/
+        class Tip{
+            constructor(){
+                this.position={x:0,y:0};
+                this.rectW=200;
+                this.rectH=40;
+                this.distance=50;
+                this.lineDash=[4];
+                this.fontSize=18;
+                this._text='';
+                this.padW=15;
+                this.padH=6;
+                this.rectX=0;
+                this.rectY=0;
+                this.lineY=0;
+                this._xDir='t';
+                this._yDir='r';
+                this.visible=false;
+            }
+            get text(){
+                return this._text;
+            }
+            set text(text){
+                const {padW,padH,fontSize}=this;
+                const ctx=document.createElement('canvas').getContext('2d');
+                ctx.font=`${fontSize}px arial`;
+                const {width}=ctx.measureText(text);
+                this.rectW=width+padW*2;
+                this.rectH=fontSize+padH*2;
+                console.log('this.rectW',this.rectW);
+                this._text=text;
+            }
+            get xDir(){
+                return this._xDir;
+            }
+            set xDir(val){
+                this._xDir=val;
+                if(val==='l'){
+                    this.rectX=0;
+                }else{
+                    console.log('r');
+                    this.rectX=-this.rectW;
+                }
+            }
+            get yDir(){
+                return this._yDir;
+            }
+            set yDir(val){
+                const {rectH,distance,position:{x,y}}=this;
+                this._yDir=val;
+                if(val==='t'){
+                    this.lineY=-distance;
+                    this.rectY=-distance-rectH;
+                }else{
+                    this.lineY=distance;
+                    this.rectY=distance;
+                }
+            }
+            update(x,y){
+                const {distance,rectW,rectH}=this;
+                this.position={x,y};
+                let xDir='r';
+                let yDir='t';
+                console.log('x',x);
+                if(x-rectW<0){
+                    xDir='l';
+                }
+                if(y-distance-rectH<0){
+                    yDir='b';
+                }
+                this.xDir=xDir;
+                this.yDir=yDir;
+            }
+            draw(ctx){
+                const {position:{x,y},rectX,rectY,rectW,rectH,lineY,lineDash,fontSize,padW,padH,dir,visible,text}=this;
+                if(!visible){return}
+                ctx.save();
+                ctx.translate(x,y);
+
+                //线
+                ctx.strokeStyle='maroon';
+                ctx.beginPath();
+                ctx.moveTo(0,0);
+                ctx.lineTo(0,lineY);
+                ctx.stroke();
+
+                /*文字*/
+                ctx.font=`${fontSize}px arial`;
+                //底色
+                ctx.fillStyle='rgba(200,0,0,0.7)';
+                ctx.strokeRect(rectX,rectY,rectW,rectH);
+                ctx.fillRect(rectX,rectY,rectW,rectH);
+                //文字内容
+                ctx.fillStyle='#fff';
+                ctx.textBaseline='top';
+                ctx.fillText(text,rectX+padW,rectY+padH);
+                
+
+                ctx.restore();
+            }
+        }
+
+        const tip=new Tip();
+
+        function render(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            tip.draw(ctx);
+        }
+
+
+        myChart.on('mouseover',({dataIndex,data,name})=>{
+            //坐标系的转换
+            const [x,y]=myChart.convertToPixel({xAxisIndex: 0, yAxisIndex: 0}, [dataIndex,data]);
+            tip.visible=true;
+            tip.text=`${name}：${data} ----------------`;
+            tip.update(x,y);
+            render();
+        })
+        myChart.on('mouseout',(event)=>{
+            tip.visible=false;
+            render();
+        })
+
+    </script>
+</body>
+
+</html>

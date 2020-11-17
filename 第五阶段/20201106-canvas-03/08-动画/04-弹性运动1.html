@@ -53,11 +53,11 @@
     /*速度 vy（像素/毫秒）*/
     let vy=0.2;
 
-    //加速度
+    //加速度 ay
     const ay=0.001;
 
     //弹力
-    const bounce=1;
+    const bounce=0.8;
 
     /*计时器*/
     let time=new Date();
@@ -67,11 +67,12 @@
         const now=new Date();
         const diff=now-time;
         time=now;
-        console.log(diff);
 
         //清理画布
         ctx.clearRect(0,0,canvas.width,canvas.height);
         //绘图
+        /*速度 vy=0.2（像素/毫秒）*/
+        //加速度 ay=0.01
         vy+=ay*diff;
         ball.y+=vy*diff;
 
