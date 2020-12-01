@@ -1,0 +1,6 @@
+<!--pages/01-secPage/01-secPage.wxml-->
+<text>pages/01-secPage/01-secPage.wxml</text>
+<view class="container">
+  <navigator open-type="navigateBack">返回上一级</navigator>
+  <button bindtap="toPage">用js返回</button>
+</view>

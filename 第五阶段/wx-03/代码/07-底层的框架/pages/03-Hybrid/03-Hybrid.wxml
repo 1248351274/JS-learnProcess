@@ -1,0 +1,7 @@
+<!--pages/03-Hybrid/03-Hybrid.wxml-->
+<text>pages/03-Hybrid/03-Hybrid.wxml</text>
+<!-- map 地图
+  latitude 经度 39.915
+  longtitude 维度 116.404
+ -->
+<map class="map" latitude="39.915" longtitude="116.404"></map>

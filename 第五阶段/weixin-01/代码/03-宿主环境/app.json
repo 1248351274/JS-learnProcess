@@ -1,0 +1,36 @@
+{
+  "pages":[
+    "pages/05-event/05-event",
+    "pages/04-component/04-component",
+    "pages/01-page/01-page",
+    "pages/index/index",
+    "pages/01-secPage/01-secPage",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "selectedColor":"#00acec",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/homeSel.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath": "images/heart.png",
+        "selectedIconPath": "images/heartSel.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

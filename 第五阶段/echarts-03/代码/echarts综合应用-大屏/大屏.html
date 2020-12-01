@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的大屏</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <div id="header">信阳市经济情况可视化</div>
+    <div id="cont">
+        <div class="cont-edge">
+            <div id="chartL1" class="box"></div>
+            <div id="chartL2" class="box"></div>
+            <div id="chartL3" class="box"></div>
+        </div>
+        <div class="cont-center">
+            <div class="center-tit">
+                <div class="center-row">
+                    <div class="center-num">12345786</div>
+                    <div class="center-num">9876588</div>
+                </div>
+                <div class="center-row">
+                    <div class="center-text">2019年收入情况</div>
+                    <div class="center-text">2019年支出情况</div>
+                </div>
+            </div>
+            <div class="center-cont">
+                <div class="centerImg">
+                    <img class="img1" src="./images/lbx.png" alt="">
+                </div>
+                <div class="centerImg">
+                    <img class="img2" src="./images/jt.png" alt="">
+                </div>
+                <div id="chartC"></div>
+            </div>
+        </div>
+        <div class="cont-edge">
+            <div id="chartR1" class="box"></div>
+            <div id="chartR2" class="box"></div>
+            <div id="chartR3" class="box"></div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="https://lib.baomitu.com/echarts/4.7.0/echarts.min.js"></script>
+<script src="./js/chalk.js"></script>
+<!-- <script src="./js/walden.js"></script> -->
+<script src="https://api.map.baidu.com/api?v=3.0&ak=EcMeTlWuNyyqL4GwZT5Nmlj9mtpvhE9Y"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+<script src='./js/China.js'></script>
+
+<script>
+    // 折线图 - chartL1
+    {
+        const source = [
+            ['年','2014', '2015', '2016', '2017', '2018', '2019', '2020'],
+            ['收入',820, 932, 901, 934, 1290, 1330, 1520],
+            ['支出',200, 632, 601, 634, 850, 1000, 1100]
+        ];
+        // 实例化
+        const chart = echarts.init(document.getElementById('chartL1'),'chalk');
+
+        const option = {
+            title:{
+                text:'西虹市人民收入增长情况',
+                left:'center'
+            },
+            dataset:{source},
+            xAxis:{
+                type:'category',
+                axisLabel:{
+                    rotate:30
+                }
+            },
+            yAxis:{
+                type:'value'
+            },
+            series: [
+                {type:'line',seriesLayoutBy:'row'},
+                {type:'line',seriesLayoutBy:'row'},
+            ]
+
+        };
+        // 显示图表
+        chart.setOption(option)
+    }
+
+    // {
+    //     /*数据源*/
+    //     const source=[
+    //         ['年','2014', '2015', '2016', '2017', '2018', '2019', '2020'],
+    //         ['收入',820, 932, 901, 934, 1290, 1330, 1520],
+    //         ['支出',200, 632, 601, 634, 850, 1000, 1100]
+    //     ];
+
+    //     /*实例化echarts*/
+    //     const chart = echarts.init(document.getElementById('chartL1'),'walden');
+    //     /*配置项
+    //     *   title
+    //     *       text '西虹市人民收入增长情况'
+    //     *   dataset 数据集
+    //     *       source 数据源
+    //     *   xAxis
+    //     *       type
+    //     *           category 类目轴
+    //     *       boundaryGap 边界间隙
+    //     *       axisLabel 坐标轴刻度标签的相关设置
+    //     *           rotate 刻度标签旋转的角度
+    //     *   yAxis
+    //     *       type
+    //     *           value 数值轴
+    //     *   series 系列集合
+    //     *       type 系列类型，如line
+    //     *       seriesLayoutBy 行列映射
+    //     *           column 应到 dataset 的列，默认
+    //     *           row 应到 dataset 的行
+    //     *
+    //     * */
+    //     const option = {
+    //         title:{
+    //             text:'西虹市人民收入增长情况',
+    //             left:'center'
+    //         },
+    //         dataset:{source},
+    //         xAxis:{
+    //             type:'category',
+    //             axisLabel:{
+    //                 rotate:30
+    //             }
+    //         },
+    //         yAxis:{
+    //             type:'value'
+    //         },
+    //         series: [
+    //             {type:'line',seriesLayoutBy:'row'},
+    //             {type:'line',seriesLayoutBy:'row'},
+    //         ]
+
+    //     };
+    //     /*显示图表*/
+    //     chart.setOption(option);
+    // }
+    
+</script>
+</html>

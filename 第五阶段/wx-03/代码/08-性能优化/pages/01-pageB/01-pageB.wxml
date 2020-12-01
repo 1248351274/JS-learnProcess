@@ -1,0 +1,6 @@
+<!--pages/01-pageB/01-pageB.wxml-->
+<text>pages/01-pageB/01-pageB.wxml</text>
+<view class="container">
+  <navigator url="/pages/01-pageA/01-pageA">navigateTo  去pageA</navigator>
+  <navigator open-type="navigateBack" >navigateBack 去pageA</navigator>
+</view>

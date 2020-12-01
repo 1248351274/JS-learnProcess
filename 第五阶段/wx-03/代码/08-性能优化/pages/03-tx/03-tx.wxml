@@ -1,0 +1,6 @@
+<!--pages/03-tx/03-tx.wxml-->
+<text>pages/03-tx/03-tx.wxml</text>
+<view class="container">
+  <button data-key="天天向上" bindtap="tap">{{motto}}</button>
+
+</view>

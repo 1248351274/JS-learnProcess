@@ -1,0 +1,7 @@
+<!--pages/01-page/01-page.wxml-->
+<text>pages/01-page/01-page.wxml</text>
+
+<view class="container rect">
+  <navigator url="../01-secPage/01-secPage">去二级页</navigator>
+  <button bindtap="toSecPage">用js 去二级页</button>
+</view>

@@ -1,0 +1,6 @@
+/* pages/01-page/01-page.wxss */
+.rect{
+  width: 750rpx;
+  height: 750rpx;
+  background-color: antiquewhite;
+}

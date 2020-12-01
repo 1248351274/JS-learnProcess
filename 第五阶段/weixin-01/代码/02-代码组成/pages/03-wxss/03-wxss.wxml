@@ -1,0 +1,7 @@
+<!--pages/03-wxss/03-wxss.wxml-->
+<text>pages/03-wxss/03-wxss.wxml</text>
+<view class="container">
+  <text class="sky bold" style="font-size:24px">{{motto}}</text>
+</view>
+<view class="box"></view>
+

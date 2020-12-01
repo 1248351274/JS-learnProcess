@@ -1,0 +1,12 @@
+/* pages/03-wxss/03-wxss.wxss */
+@import '../../com/com.wxss';
+
+.sky{
+  color: #00acec;
+}
+.box{
+  /* width:100% */
+  width: 750rpx;
+  height:750rpx;
+  background-color: #00acec;
+}

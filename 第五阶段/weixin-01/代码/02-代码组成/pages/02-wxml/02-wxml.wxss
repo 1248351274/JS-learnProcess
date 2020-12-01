@@ -1,0 +1,6 @@
+/* pages/02-wxml/02-wxml.wxss */
+.cont{
+  padding: 100rpx;
+  font-size: 18px;
+  line-height: 28px;
+}
