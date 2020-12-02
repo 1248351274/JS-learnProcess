@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      img {
+        display: block;
+        width: 80%;
+      }
+  </style>
+</head>
+<body>
+<a href="https://www.baidu.com">百度</a>
+<input type="text" />
+<br/>
+<img src="img/IMG_2662.JPG" />
+<ul id="list"></ul>
+<script>
+/*生成列表项*/
+(function() {
+  var list = document.querySelector("#list");
+  list.innerHTML = [...(".".repeat(100))].map((item,index)=>`<li>这是第${index}个li</li>`).join(""); 
+})(); 
+/*
+  document、html、body 这三个元素的 touch 事件，默认不允许阻止默认事件
+*/
+document.addEventListener("touchmove",function(e){
+  e.preventDefault();
+},{
+  passive:false  
+})
+// passive false 该事件处理中允许阻止默认事件，true 该事件处理函数中不允许阻止默认事件
+/*
+  阻止默认事件带来的问题：
+    touchstart：
+      1. 阻止触发滚动条
+      2. 阻止 mouse 事件
+      3. 阻止内容选中
+      4. 阻止系统菜单
+      5. 阻止双指缩放
+      6. 阻止表单控件选中焦点
+    touchmove:
+      1. 阻止触发滚动条
+      2. 阻止双指缩放
+*/
+</script>
+</body>
+</html>

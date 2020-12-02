@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #div {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      margin: -25px 0 0 -25px;
+      width: 50px;
+      height: 50px;
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div"></div>
+  <script>
+    /*
+      1. 在 IOS 和 安卓下，加速度方向的取值相反，如 IOS中 x = 5 时，安卓下：x = -5 
+      2. 在 IOS 10.X 之后，如果想要使用 devicemotion 等 速度与方向的 API，必须在 https 协议下使用。
+      3. 在 IOS 12.2 中，用户可以在手机设置中，关闭 速度与方向 的权限获取
+    */
+    //console.log(window.navigator.userAgent);
+    
+    /*
+        检测是否有动作与方向的访问权限
+    */
+    (function() {
+      let timer = 0;
+      timer = setTimeout(function() {
+        alert("请开启动作与方向的访问权限");
+      }, 500);
+      window.addEventListener("devicemotion",()=>{
+        clearTimeout(timer);
+      },{once:true})
+    })();
+
+    function getAdr() {
+      var u = window.navigator.userAgent;
+      return u.indexOf("Android")>-1||u.indexOf("Adr")>-1;
+    }
+    let translateX = 0;
+    window.addEventListener("devicemotion", function (e) {
+      let { x, y, z } = e.accelerationIncludingGravity;
+      let { x: x2, y: y2, z: z2 } = e.acceleration;
+      x -= x2;
+      x = Math.round(x);
+      if(getAdr()){
+        x = -x;
+      }
+      translateX += x;
+      div.style.transform = `translateX(${translateX}px)`;
+    })
+  </script>
+</body>
+
+</html>

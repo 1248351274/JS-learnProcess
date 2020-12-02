@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      #div {
+        font: 20px/1.5 "宋体";
+      }
+  </style>
+</head>
+<body>
+ <div id="div">
+ </div> 
+<script>
+//devicemotion 检测手机发生了运动
+// acceleration 手机的加速度(手机在运动)
+// accelerationIncludingGravity 手机重力加速度(重力 + 手机自身的运动速度)
+window.addEventListener("devicemotion",function(e) {
+    const {x,y,z} = e.accelerationIncludingGravity;
+    div.innerHTML = `
+      x:${x.toFixed(2)}<br/>
+      y:${y.toFixed(2)}<br/>
+      z:${z.toFixed(2)}
+    `
+})
+</script>  
+</body>
+</html>

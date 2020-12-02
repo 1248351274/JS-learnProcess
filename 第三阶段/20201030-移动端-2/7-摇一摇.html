@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script src="setMotion.js"></script>
+<script>
+  /*
+      摇一摇：
+        监听手机的加速度超过了某个阈值
+  */
+document.addEventListener("touchstart",()=>{
+  shake(()=>{
+    alert("您进行了摇一摇");
+  })
+},{
+  once: true
+}); 
+function shake(cb) {
+  const maxRange = 60; //加速度差值 超过该幅度我们可以认为用户进行了摇一摇
+  const minRange = 20; //当用户停止摇一摇时，在执行
+  let lastX = 0;
+  let lastY = 0;
+  let lastZ = 0;
+  let isShake = false;
+  setMotion((e)=>{
+    const {x,y,z} = e.acceleration;
+    const nowRange = Math.abs(x-lastX) + Math.abs(y - lastY) + Math.abs(z - lastZ);
+    if(nowRange > maxRange){
+      isShake = true;
+    } else if(isShake&&nowRange < minRange){
+      cb();
+      isShake = false;
+    }
+    lastX = x;
+    lastY = y;
+    lastZ = z;
+  })
+} 
+</script>  
+</body>
+</html>

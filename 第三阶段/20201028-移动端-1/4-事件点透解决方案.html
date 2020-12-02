@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      background: red;
+      opacity: .7;
+    }
+  </style>
+</head>
+<body>
+<a href="https://www.baidu.com">百度</a>
+<!-- href 是一个内置 click 事件 -->
+<div id="box"></div>
+<script>
+/*
+  事件点透：
+    在移动端同样也支持 mouse 事件，但机制有一些小问题。
+    在移动端，touch事件会立即触发，然后记录手指触碰坐标。一定延迟时间之后(300ms)，在该坐标找元素。
+    如果元素身上有 mouse 事件，就执行元素的 mouse 事件。
+  解决方案：
+    1. 延迟 touch 事件
+    2. 不适用 mouse 事件
+    3. 阻止默认事件
+*/    
+var box = document.querySelector("#box");
+// box.addEventListener("touchend",function() {
+//   setTimeout(() => {
+//     box.style.display = "none";
+//   }, 300);
+// });
+box.addEventListener("touchend",function(e) {
+    box.style.display = "none";
+    e.preventDefault();
+});
+</script>
+</body>
+</html>

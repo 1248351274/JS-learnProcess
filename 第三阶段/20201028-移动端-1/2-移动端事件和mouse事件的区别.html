@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+/*
+在移动端同样也支持 mouse 事件。但有问题
+touchstart -- 手指在元素上摁下
+touchmove -- 手指在元素上摁下之后，手指在屏幕中移动
+touchend -- 手指在元素上摁下之后, 手指离开屏幕 
+*/    
+var box = document.querySelector("#box");
+box.addEventListener("mousedown",function() {
+    console.log("手指触摸");
+});
+box.addEventListener("mousemove",function() {
+    console.log("手指移动");
+});
+box.addEventListener("mouseup",function() {
+    console.log("手指抬起");
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      img {
+        display: block;
+        width: 80%;
+      }
+  </style>
+</head>
+<body>
+<div id="wrap">  
+  <a href="https://www.baidu.com">百度</a>
+  <input type="text" />
+  <br/>
+  <img src="img/IMG_2662.JPG" />
+  <ul id="list"></ul>
+</div>
+<script>
+/*生成列表项*/
+(function() {
+  var list = document.querySelector("#list");
+  list.innerHTML = [...(".".repeat(100))].map((item,index)=>`<li>这是第${index}个li</li>`).join(""); 
+})(); 
+/*
+  document、html、body 这三个元素的 touch 事件，默认不允许阻止默认事件
+
+  在移动端，如果在元素上已经触发了滚动条滚动，则不能再阻止默认事件
+*/
+var wrap = document.querySelector("#wrap");
+var isSroll = true;
+wrap.addEventListener("touchstart",function(e) {
+    isSroll = true;
+    setTimeout(() => {
+      isSroll = false;
+    }, 1000);
+});
+wrap.addEventListener("touchmove",function(e) {
+  if(!isSroll){
+    e.preventDefault();
+  }
+});
+
+</script>
+</body>
+</html>

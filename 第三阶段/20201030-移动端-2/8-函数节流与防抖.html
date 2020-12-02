@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 300px;
+      height: 300px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div> 
+<script>
+/*
+  函数防抖[debounce]：
+    一定时间内，多次调用某个函数，该函数只执行一次
+
+*/  
+{
+  let box = document.querySelector("#box");
+  let index = 0;
+  console.time(index);
+  box.onmousemove = function() {
+    console.timeEnd(index);
+    index++;
+    console.time(index);
+  }
+}  
+</script> 
+</body>
+</html>

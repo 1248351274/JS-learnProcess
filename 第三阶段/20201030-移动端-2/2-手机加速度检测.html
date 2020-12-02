@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      #div {
+        font: 20px/1.5 "宋体";
+      }
+  </style>
+</head>
+<body>
+ <div id="div">
+ </div> 
+<script>
+//devicemotion 检测手机发生了运动
+// acceleration 手机的加速度(手机在运动)
+window.addEventListener("devicemotion",function(e) {
+    const {x,y,z} = e.acceleration;
+    div.innerHTML = `
+      x:${x.toFixed(0)}<br/>
+      y:${y.toFixed(0)}<br/>
+      z:${z.toFixed(0)}
+    `
+})
+</script>  
+</body>
+</html>

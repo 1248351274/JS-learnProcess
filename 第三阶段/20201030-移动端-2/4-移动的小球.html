@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      #div {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin: -25px 0 0 -25px;
+        width: 50px;
+        height: 50px;
+        background: red;
+      }
+  </style>
+</head>
+<body>
+ <div id="div"></div> 
+<script>
+//devicemotion 检测手机发生了运动
+// acceleration 手机的加速度(手机在运动)
+// accelerationIncludingGravity 手机重力加速度(重力 + 手机自身的运动速度)
+let translateX = 0;
+window.addEventListener("devicemotion",function(e) {
+    let {x,y,z} = e.accelerationIncludingGravity;
+    let {x:x2,y:y2,z:z2} = e.acceleration;
+    x -= x2;
+    x = Math.round(x);
+    //div.innerHTML = x;
+    translateX += x;
+    div.style.transform = `translateX(${translateX}px)`;
+})
+</script>  
+</body>
+</html>
